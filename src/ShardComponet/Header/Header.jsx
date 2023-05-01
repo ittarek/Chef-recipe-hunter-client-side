@@ -14,13 +14,13 @@ const Header = () => {
     <Navbar
       bg=""
       expand="lg"
-      className=" bg-transparent shadow-lg sticky-lg-top"
+      className=" bg-transparent shadow-lg mb-5"
     >
       <Container className="d-flex  bg-transparent">
      
-      <div className="-ms-5">
+      <div className="rounded-lg">
       <img
-          className="logo  m-auto text-white"
+          className="logo  m-auto   "
           src="https://img.freepik.com/premium-vector/cooking-logo-design_636083-140.jpg?w=740"
           alt=""
         />

@@ -6,13 +6,13 @@ import Footer from '../../ShardComponet/Footer/Footer';
 
 const Main = () => {
           return (
-                    <>
+                    <div>
 
                 <Header></Header>
                     <Outlet></Outlet>
                     <Footer></Footer>
                              
-                    </>
+                    </div>
           );
 };
 
