@@ -8,6 +8,7 @@ import './Header.css'
 
 import "./Header.css";
 import NavigationBar from "../NavigationBar/NavigationBar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -47,8 +48,8 @@ const Header = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link className="" href="#action2">
-              Home
+            <Nav.Link >
+            <Link to='/'>  Home</Link>
             </Nav.Link>
             <Nav.Link className="" href="#action1">
               Destination
@@ -60,8 +61,8 @@ const Header = () => {
               Contact
             </Nav.Link>
 
-            <Nav.Link href="#">
-              <Button variant="outline-warning">Login</Button>
+            <Nav.Link >
+              <Button variant="outline-warning" > <Link className=" text-white" to='/login'>Login</Link> </Button>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
