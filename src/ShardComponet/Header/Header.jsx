@@ -12,10 +12,10 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <Navbar
+    <Navbar 
       bg=""
       expand="lg"
-      className=" bg-transparent shadow-lg mb-5"
+      className=" bg-transparent shadow-lg mb-5 position-relative"
     >
       <Container className="d-flex  bg-transparent">
      
@@ -62,7 +62,7 @@ const Header = () => {
             </Nav.Link>
 
             <Nav.Link >
-              <Button variant="outline-warning" > <Link className=" text-white" to='/login'>Login</Link> </Button>
+              <Button variant="outline-warning btn-success" > <Link className=" text-white " to='/login'>Login</Link> </Button>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

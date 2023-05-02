@@ -1,0 +1,8 @@
+*{font-family: 'Poppins', sans-serif;} 
+
+.image{
+          height: 100vh;
+background-image: url(https://duruthemes.com/demo/html/winta/multipage-light/img/about1.jpg) ;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;}
