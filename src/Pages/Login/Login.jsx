@@ -14,25 +14,48 @@ import { Button } from "react-bootstrap";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
-  const { createLogin } = useContext(AuthContext);
+  const { createLogin, googleLogin, githubLogin } = useContext(AuthContext);
 
-
-//   login function
+  //   login function
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     form.reset();
-     
-    createLogin(email,password)
-    .then(result =>{
-          const loggedUser = result.user;
-          console.log(loggedUser);
-    })
-    .catch(error =>{
-          console.log(error.message);
-    })
+    //      login with email/password
+    createLogin(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+
+    //     login with Google
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+// login with GitHub
+  const handleGithubLogin = () => {
+          githubLogin()
+          .then(result =>{
+                    const loggedUser = result.user;
+                    console.log(loggedUser);
+          })
+          .catch(error =>{
+                    console.log(error.message);
+          })
   };
   return (
     <div className="wrapper mx-auto">
@@ -59,22 +82,25 @@ const Login = () => {
               <input type="checkbox" name="" id="" />
               remember me
             </label>
-            <a className="text-white" href="#">
+            <Link className="text-white" href="#">
               Forgat Password
-            </a>
+            </Link>
           </div>
           <Button type="submit" className="log-btn text-white">
             LogIn
           </Button>
 
-          <Button className="log-btn text-white mt-2 mb-2 btn-outline-info btn-info">
+          <Button
+            onClick={handleGoogleLogin}
+            className="log-btn text-white mt-2 mb-2 btn-outline-info btn-info"
+          >
             {" "}
             <span className="me-3">
               <FaGoogle></FaGoogle>{" "}
             </span>{" "}
             Login With Google
           </Button>
-          <Button className="log-btn text-white">
+          <Button onClick={handleGithubLogin} className="log-btn text-white">
             {" "}
             <span className="me-3">
               {" "}
@@ -86,10 +112,10 @@ const Login = () => {
             <p>
               {" "}
               Don't have an account?
-              <a href="#" className="register-link">
+              <Link href="#" className="register-link">
                 {" "}
                 <Link to="/register">Register</Link>{" "}
-              </a>
+              </Link>
             </p>
           </div>
         </Form>

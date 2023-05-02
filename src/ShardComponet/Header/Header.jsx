@@ -9,8 +9,12 @@ import './Header.css'
 import "./Header.css";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
+  const {user} = useContext(AuthContext)
+  // console.log("user header",user);
   return (
     <Navbar 
       bg=""
@@ -55,14 +59,14 @@ const Header = () => {
               Destination
             </Nav.Link>
             <Nav.Link className="" href="#action2">
-              Blog
+             <Link to="/blog"> Blog</Link>
             </Nav.Link>
             <Nav.Link className="" href="#action2">
               Contact
             </Nav.Link>
 
             <Nav.Link >
-              <Button variant="outline-warning btn-success" > <Link className=" text-white " to='/login'>Login</Link> </Button>
+             {user ?  <Button variant="outline-warning btn-success" > <Link className=" text-white " to='/login'>Login</Link> </Button>:  <Button>LogOut</Button> }
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

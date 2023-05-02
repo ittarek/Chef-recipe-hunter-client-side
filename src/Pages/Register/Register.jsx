@@ -66,23 +66,22 @@ const Register = () => {
               <input type="checkbox" name="" id="" />
               remember me
             </label>
-            <a href="#">Forgat Password</a>
+            <Link href="#">Forgat Password</Link>
           </div>
           <Button
             variant="btn-success"
             type="submit"
             className="reg-btn text-white"
           >
-            LogIn
+            Register
           </Button>
           <div className="login-register">
             <p>
               {" "}
               Don't have an account?
-              <a href="#" className="register-link">
-                {" "}
+            
                 <Link to="/login">Login</Link>{" "}
-              </a>
+           
             </p>
           </div>
         </form>
