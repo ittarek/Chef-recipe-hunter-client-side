@@ -4,35 +4,43 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import './Header.css'
+import "./Header.css";
 
 import "./Header.css";
 import NavigationBar from "../NavigationBar/NavigationBar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   // console.log("user header",user);
+
+  // Active link function
+  const navLinkStyle = ({ isActive }) => {
+    return {
+      fontWeigth: isActive ? "bold" : "none",
+
+      textDecoration: isActive ? "none" : "uderline",
+      color: isActive ? "red" : "none",
+    };
+  };
   return (
-    <Navbar 
+    <Navbar
       bg=""
       expand="lg"
       className=" bg-transparent shadow-lg mb-5 position-relative"
     >
       <Container className="d-flex  bg-transparent">
-     
-      <div className="rounded-lg">
-      <img
-          className="logo  m-auto   "
-          src="https://img.freepik.com/premium-vector/cooking-logo-design_636083-140.jpg?w=740"
-          alt=""
-        />
-      </div>
-      
-       
- <Form className="d-flex search-box">
+        <div className="rounded-lg">
+          <img
+            className="logo  m-auto   "
+            src="https://img.freepik.com/premium-vector/cooking-logo-design_636083-140.jpg?w=740"
+            alt=""
+          />
+        </div>
+
+        <Form className="d-flex search-box">
           <Form.Control
             type="search"
             placeholder="Search"
@@ -40,37 +48,46 @@ const Header = () => {
             aria-label="Search"
           />
           {/* <Button variant="outline-warning"  >Search</Button> */}
-        </Form> 
-    
-       <Navbar.Toggle
-          aria-controls="navbarScroll"
-          className=" bg-info  "
-        />
+        </Form>
+
+        <Navbar.Toggle aria-controls="navbarScroll" className=" bg-info  " />
         <Navbar.Collapse>
           <Nav
-            className="d-flex align-items-center"
+            className="d-flex align-items-center justify-content-between"
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link >
-            <Link to='/'>  Home</Link>
-            </Nav.Link>
-            <Nav.Link className="" href="#action1">
-              Destination
-            </Nav.Link>
-            <Nav.Link className="" href="#action2">
-             <Link to="/blog"> Blog</Link>
-            </Nav.Link>
-            <Nav.Link className="" href="#action2">
-              Contact
-            </Nav.Link>
+            <NavLink style={navLinkStyle} to="/">
+              {" "}
+              Home
+            </NavLink>
 
-            <Nav.Link >
-             {user ?  <Button variant="outline-warning btn-success" > <Link className=" text-white " to='/login'>Login</Link> </Button>:  <Button>LogOut</Button> }
-            </Nav.Link>
+            <NavLink to='/destination' style={navLinkStyle} className="mx-2">
+              {" "}
+              Destination
+            </NavLink>
+
+            <NavLink style={navLinkStyle} to="/blog">
+              {" "}
+              Blog
+            </NavLink>
+
+            <NavLink to='/contact' style={navLinkStyle} className="mx-2">
+              {" "}
+              Contact
+            </NavLink>
+
+            {user ? 
+         
+                <NavLink style={navLinkStyle} className="btn btn-outline btn-success  " to="/login">
+                  Login
+                </NavLink>
+          
+             : 
+              <Button>LogOut</Button>
+            }
           </Nav>
         </Navbar.Collapse>
-    
       </Container>
     </Navbar>
   );

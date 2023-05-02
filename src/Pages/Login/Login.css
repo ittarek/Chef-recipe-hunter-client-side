@@ -121,7 +121,7 @@
           color: #141313;
           font-weight: 500;
         }
-        .btn:hover {
+        .log-btn :hover {
           background-color: green;
         }
         .login-register {
