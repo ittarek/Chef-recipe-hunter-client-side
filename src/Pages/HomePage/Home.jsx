@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import './Home.css'
 import Chef from "../ChefPage/Chef";
+import Branch from "../OureBrangPage/Branch";
+import TodayMenu from "../TodayMenuePage/TodayMenu";
 
 const Home = () => {
 const [chefData, setChefData] = useState([]);
@@ -9,7 +11,7 @@ const [showAll, setShowAll] = useState(false);
 
 console.log(chefData);
 useEffect(()=>{
-  fetch('Chef.json')
+  fetch('http://localhost:5000/chefData')
   .then(res => res.json())
   .then(data => setChefData(data))
 },[])
@@ -43,12 +45,26 @@ useEffect(()=>{
      </div>
      <Button 
           onClick={() => setShowAll(true)}
-          className="see-all-button  text-white  "
+          className="see-all-button  text-white  mb-5"
         >
           See All Chef
 
         </Button>
-      </Container></div>
+      </Container>
+      
+      
+      <Container fluid className="branch-image">
+        <Branch></Branch>
+      </Container>
+
+      <Container fluid className="mt-5 mb-5">
+        <TodayMenu></TodayMenu>
+      </Container>
+      
+      
+      
+      
+      </div>
   );
 };
 

@@ -29,3 +29,12 @@
           }
           
 }
+.branch-image{
+          background-image: url(https://duruthemes.com/demo/html/winta/multipage-light/img/banner.jpg);
+          background-repeat: no-repeat;
+          background-position: fixed;
+          background-size: cover;
+          background-attachment: fixed;
+          height: 75vh;
+          
+}
