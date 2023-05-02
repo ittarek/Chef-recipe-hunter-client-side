@@ -2,7 +2,7 @@ import React from "react";
 
 const Branch = () => {
   return (
-    <div className="d-flex justify-content-center align-items-center flex-column">
+    <div className="d-flex justify-content-center align-items-center flex-column mx-auto">
       <h2 className="text-center text-info">Our Branch</h2>
 
       {/* mumbai */}
