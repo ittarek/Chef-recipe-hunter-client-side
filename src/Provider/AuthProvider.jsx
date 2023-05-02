@@ -28,6 +28,7 @@ const AuthProvider = ({ children }) => {
   //   register provider
   const createUser = (email, password) => {
     setLoader(true);
+
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -74,6 +75,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     githubLogin,
     loader,
+   
   };
 
   return (

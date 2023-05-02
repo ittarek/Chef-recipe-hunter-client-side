@@ -1,14 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Register.css";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaCross } from "react-icons/fa";
+
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
-
-//   register function
+  //   register function
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,6 +20,11 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     form.reset();
+    setError("");
+    if (password.length < 6) {
+      setError("Password Al least 6 Character");
+      return;
+    }
 
     createUser(email, password)
       .then((result) => {
@@ -29,7 +37,11 @@ const Register = () => {
   };
   return (
     <div className="register mx-auto">
-      <span className=""> </span>
+      <span className="icon-close">
+        {/* <FontAwesomeIcon icon={faXmark} /> */}
+        {/* <FontAwesomeIcon icon="fa-solid fa-xmark" /> */}
+        <FaCross></FaCross>
+      </span>
       <div className="reg-box login">
         <h2 className="text-success text-center">Register</h2>
         <form onSubmit={handleRegister} action="#">
@@ -75,15 +87,16 @@ const Register = () => {
           >
             Register
           </Button>
-          <div className="login-register">
+          <div className="login-register ">
             <p>
               {" "}
               Don't have an account?
-            
-                <Link to="/login">Login</Link>{" "}
-           
+              <Link to="/login">Login</Link>{" "}
             </p>
           </div>
+          <span className="text-danger fw-bold fst-italic rounded p-1 mb-2">
+            {error}
+          </span>
         </form>
       </div>
     </div>

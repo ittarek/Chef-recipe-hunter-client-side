@@ -13,8 +13,17 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loggedOut } = useContext(AuthContext);
   // console.log("user header",user);
+
+  // LogOut function
+  const handleLogOut = () => {
+    loggedOut()
+      .then()
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   // Active link function
   const navLinkStyle = ({ isActive }) => {
@@ -62,7 +71,7 @@ const Header = () => {
               Home
             </NavLink>
 
-            <NavLink to='/destination' style={navLinkStyle} className="mx-2">
+            <NavLink to="/destination" style={navLinkStyle} className="mx-2">
               {" "}
               Destination
             </NavLink>
@@ -72,20 +81,36 @@ const Header = () => {
               Blog
             </NavLink>
 
-            <NavLink to='/contact' style={navLinkStyle} className="mx-2">
+            <NavLink to="/contact" style={navLinkStyle} className="mx-2">
               {" "}
               Contact
             </NavLink>
 
-            {user ? 
+            {user ? (
+              <NavLink
+                onClick={handleLogOut}
+                style={navLinkStyle}
+                className="btn btn-outline btn-success  "
+              >
+                LogOut
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/login"
+                style={navLinkStyle}
+                className="btn btn-outline btn-success  "
+              >
+                {" "}
+                Login
+              </NavLink>
+            )}
          
-                <NavLink style={navLinkStyle} className="btn btn-outline btn-success  " to="/login">
-                  Login
-                </NavLink>
-          
-             : 
-              <Button>LogOut</Button>
+            {
+              user && <span className="text-secondary ms-3 border-danger border-4 rounded-2">{user.displayName}</span>
             }
+            {/* {
+              user && <span className=" ms-3 border-danger border-4 rounded-2">{user.photoUR}</span>
+            } */}
           </Nav>
         </Navbar.Collapse>
       </Container>

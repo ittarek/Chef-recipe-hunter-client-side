@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import image from "../../assets/bgc3.jpg";
 import {
@@ -9,28 +9,40 @@ import {
   FaGoogle,
 } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const { createLogin, googleLogin, githubLogin } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
+//   redirect to Chef details page
+const navigate = useNavigate()
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   //   login function
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    form.reset();
+
+    setError('')
+        if(email ,password){
+              setError("email and password not match")
+              return;
+    }
     //      login with email/password
     createLogin(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        form.reset();
+        navigate(from ,{replace : true})
       })
       .catch((error) => {
-        console.log(error.message);
+        setError(error.message);
       });
 
     //     login with Google
@@ -41,26 +53,28 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from ,{replace : true})
       })
       .catch((error) => {
-        console.log(error.message);
+        setError(error.message);
       });
   };
-// login with GitHub
+  // login with GitHub
   const handleGithubLogin = () => {
-          githubLogin()
-          .then(result =>{
-                    const loggedUser = result.user;
-                    console.log(loggedUser);
-          })
-          .catch(error =>{
-                    console.log(error.message);
-          })
+    githubLogin()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from ,{replace : true})
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
   return (
     <div className="wrapper mx-auto">
-      <span className=""> </span>
       <div className="form-box login">
+          <span className="icon-close"> <FaCross></FaCross></span>
         <h2>Login</h2>
         <Form onSubmit={handleLogin} action="#">
           <div className="input-box">
@@ -119,7 +133,8 @@ const Login = () => {
             </p>
           </div>
         </Form>
-      </div>
+        <span className="text-danger fs-6 fw-bolder ">{error}</span>
+      </div>{" "}
     </div>
   );
 };
