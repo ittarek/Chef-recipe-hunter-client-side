@@ -38,9 +38,9 @@ const Header = () => {
     <Navbar
       bg=""
       expand="lg"
-      className=" bg-transparent shadow-lg mb-5 position-relative"
+      className=" bg-transparent shadow-lg mb-2  position-relative"
     >
-      <Container className="d-flex  bg-transparent">
+      <Container className="d-flex position-sticky-top">
         <div className="rounded-lg">
           <img
             className="logo  m-auto   "

@@ -4,17 +4,22 @@
 
 .image {
   height: 100vh;
-  /* background-color: hsla(0, 0%, 0%, 0.6); */
+  background-color: hsla(0, 0%, 0%, 0.6);
   background-image: url(https://duruthemes.com/demo/html/winta/multipage-light/img/about1.jpg);
 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+backdrop-filter: blue;
 }
-
+.title{
+  color: cadetblue;
+}
 .margin {
   margin-top: 200px;
   margin-left: 250px;
+  margin-top:5px;
+  padding-top: 10px;
 }
 .see-all-button {
   margin-left: 490px;

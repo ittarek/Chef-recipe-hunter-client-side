@@ -1,36 +1,71 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../../Pages/HomePage/Home";
+// import Home from "../../Pages/HomePage/Home";
 import Blog from "../../Pages/BlogPAge/Blog";
 import Main from "../../LayOut/MainLayOut/Main";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 import ErrorPage from "../../Pages/Errorpage/ErrorPage";
-import ChefDetails from "../../Pages/ChefDetailsPage/ChefDetails";
-// import PrivetRout from "./PrivetRout/PrivetRout";
-import PrivetRout from './../PrivetRoute/PrivetRoute';
+// import ChefDetails from "../../Pages/ChefDetailsPage/ChefDetails";
 
+import PrivetRout from "./../PrivetRoute/PrivetRoute";
+import Destination from "../../Pages/Destination/Destination";
+import Contact from "../../Pages/Contact/Contact";
+const LazyHome = React.lazy(() => import("../../Pages/HomePage/Home"));
+
+const LazyChefDetails = React.lazy(() =>
+  import("../../Pages/ChefDetailsPage/ChefDetails")
+);
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: (
+          <React.Suspense fallback="Loading...">
+            <LazyHome></LazyHome>
+          </React.Suspense>
+        ),
       },
       {
-        path : '/login',
-        element :<Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:'/register',
-        element:<Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path: '/chefDetails',
-        element: <PrivetRout><ChefDetails></ChefDetails></PrivetRout>,
-      }
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
+      {
+        path: "/destination",
+        element: <Destination></Destination>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "/chefDetails/:id",
+        element: (
+          <React.Suspense fallback="Loading...">
+            {" "}
+            <PrivetRout>
+              <LazyChefDetails></LazyChefDetails>
+            </PrivetRout>
+          </React.Suspense>
+        ),
+
+        loader: ({ params }) =>
+          fetch(
+            `https://b7-a10-chef-recipe-hunter-server-side-ittarek.vercel.app/chefData/${params.id}`
+          ),
+      },
     ],
   },
 ]);
