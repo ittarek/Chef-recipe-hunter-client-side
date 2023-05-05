@@ -1,21 +1,25 @@
 import React from "react";
 import { Button, Card, Container, Table } from "react-bootstrap";
-import './Blog.css'
-// import ReactDOM from "react-dom";
-// // import Pdf from "react-to-pdf";
-// import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
-// import { PDFViewer } from "@react-pdf/renderer";
-import { Link } from "react-router-dom";
+import "./Blog.css";
+import ReactPdf from "../reactToPdf/ReactPdf";
+
+
+
+
+
+
 
 
 const Blog = () => {
   return (
     <Container>
-      {/* 1 */}
 
-      {/* <Button variant="light" className="btn-outline-info text-center w-25 mx-auto mt-5 d-flex justify-content-center  align-items-center">
-        <Link to="/pdfTest">myPdf</Link>
-      </Button> */}
+      <ReactPdf></ReactPdf>
+
+
+
+
+      {/* 1 */}
       <Card className="m-5 card-margin">
         <Card.Body>
           <Card.Title>

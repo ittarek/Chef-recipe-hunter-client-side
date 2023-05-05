@@ -113,7 +113,7 @@ const Header = () => {
               <NavLink
                 onClick={handleLogOut}
                 style={navLinkStyle}
-                className="btn btn-outline-info btn-success  nav-link"
+                className="btn btn-outline-info  btn-success  nav-link"
               >
                 LogOut
               </NavLink>
