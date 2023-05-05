@@ -32,23 +32,20 @@ const Home = () => {
           </h1>
           <Carousel>
           <Carousel.Item interval={1000}>
-            {/* mumbai */}
+            {/* vegitabls */}
             <img
               className="d-block rounded-3 shadow-lg img-fluid mx-auto slide-image"
               src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
               alt="First slide"
             />
             <Carousel.Caption>
-              <h4 className="text-success  text-center  fs-1">Mumbai , Indea</h4>
+              <h4 className="text-white  text-center  fs-1">Fresh Vagitable</h4>
               <p className="text-info fs-3  text-center  fst-italic">
-                The name Winta, in principle, quite fully describes the
-                restaurant's concept: red meat and red wine - what else is
-                needed for a steakhouse!
-              </p>
+              Organic Vagitable Social Media Post. Save. Organic Vagitable Social Media Post · Munna Nissan. 0 2. Healthy & Fresh Vagitable Facebook cover design.</p>
             </Carousel.Caption>
           </Carousel.Item>
 
-          {/* California */}
+          {/* barger */}
           <Carousel.Item interval={500}>
             <img
               className="d-block rounded-3 mx-auto img-fluid slide-image"
@@ -56,27 +53,23 @@ const Home = () => {
               alt="Second slide"
             />
             <Carousel.Caption>
-              <h4 className="text-success  text-center  fs-1">California, USA</h4>
+              <h4 className="text-white text-center  fs-1">Testy Burger</h4>
               <p className="text-info fs-3  text-center  fst-italic">
-                The name Winta, in principle, quite fully describes the
-                restaurant's concept: red meat and red wine - what else is
-                needed for a steakhouse!
+              Melt Meals are here for you. Your Melty Pleasure. The Spicy One. Let's Get This Bacon.!
               </p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            {/* Italy */}
+            {/*Beef*/}
             <img
               className="d-block rounded-3 img-fluid  mx-auto slide-image"
               src="https://images.unsplash.com/photo-1668724775591-f50dd8ed65a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
               alt="Third slide"
             />
             <Carousel.Caption>
-              <h4 className="text-success text-center fs-1">Roma, Italy</h4>
+              <h4 className="text-white text-center fs-1"> Beef  roast</h4>
               <p className="text-info fs-3  text-center  fst-italic ">
-                The name Winta, in principle, quite fully describes the
-                restaurant's concept: red meat and red wine - what else is
-                needed for a steakhouse!
+              Here's a timeless roast beef recipe that can be made with rump roast, round roast, or sirloin roast. Slow-roasting on low heat works magic on tougher cuts ...
               </p>
             </Carousel.Caption>
           </Carousel.Item>

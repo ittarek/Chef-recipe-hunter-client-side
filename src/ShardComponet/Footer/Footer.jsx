@@ -68,7 +68,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-md-8">
               <div className="text-left">
-                <p>© 2022, Cooker . All right reserved.</p>
+                <p>© 2023, Cooker . All right reserved.</p>
               </div>
             </div>
             <div className="col-md-4">
